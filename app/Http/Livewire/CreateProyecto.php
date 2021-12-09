@@ -50,9 +50,10 @@ class CreateProyecto extends Component
         $proyecto->save();
         //guardar img
         $imagen = new Imagen();
-        $img_url = $this->img->store('proyectos');
+        $img_url = $this->img->store('public/proyectos');
+        $formated_img_url = str_replace('public', 'storage', $img_url);
         $imagen->alt = $proyecto->nombre;
-        $imagen->url = $img_url;
+        $imagen->url = $formated_img_url;
         $imagen->proyecto_id = $proyecto->id;
         $imagen->save();
         $this->emitTo('adm-portafolio','render');

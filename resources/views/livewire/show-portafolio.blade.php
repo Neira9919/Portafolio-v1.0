@@ -1,7 +1,7 @@
 <div>
     <div class="container mt-4 mx-auto p-4">
         @foreach ($proyectos as $item)
-        <div class="grid grid-cols-1 md:grid-cols-3 shadow bg-white rounded-md">
+        <div class="mt-4 grid grid-cols-1 lg:grid-cols-3 shadow bg-white rounded-md">
             <div class="col-span-1 md:col-span-2 p-4 mx-4 my-auto rounded-md">
                 @foreach ($fotos as $foto)
                     @if ($foto->proyecto_id == $item->id)

@@ -20,7 +20,7 @@
                     <div class="flex items-center font-ail">
                         <span class="mr-2">Mostrar</span>
                         <select wire:model="l_amount"
-                        class="text-gray-700 bg-white border border-gray-600 rounded-md focus:border-kh_clair focus:outline-none">
+                            class="text-gray-700 bg-white border border-gray-600 rounded-md focus:border-kh_clair focus:outline-none">
                             <option value="10">10</option>
                             <option value="25">25</option>
                             <option value="50">50</option>
@@ -153,8 +153,21 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ $item->tech }}
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                    @livewire('edit-proyecto', ['proyecto' => $item], key($item->id))
+                                <td class=" py-4 flex whitespace-nowrap text-sm font-medium">
+                                    <div>
+                                        @livewire('edit-proyecto', ['proyecto' => $item], key($item->id))
+                                    </div>
+                                    <div>
+                                        <a wire:click="$emit('deleteProyecto', {{ $item->id }} )"
+                                            class="ml-4 mt-2 rounded-md font-ail bg-red-500 font-normal text-white border-2 border-white transition-all duration-200 group-hover:w-full ease hover:border-red-500 hover:text-red-500 hover:bg-white py-2 px-4 inline-flex items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                                viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            Eliminar</a>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
@@ -166,11 +179,42 @@
                     coincidentes.</h2>
             @endif
             @if ($proyectos->hasPages())
-            <div class="px-6 py-3">
-                {{$proyectos->links()}}
-            </div>
+                <div class="px-6 py-3">
+                    {{ $proyectos->links() }}
+                </div>
             @endif
 
         </x-table>
     </div>
+    @push('js')
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            Livewire.on('deleteProyecto', proyectoId => {
+                Swal.fire({
+                title: '¿Desea confirmar la accion?',
+                text: "Esto sera irreversible!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Confirmar',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Livewire.emitTo('adm-portafolio', 'delete', proyectoId);
+                    Swal.fire(
+                        'Registro eliminado',
+                        'Se ha eliminado el registro correctamente',
+                        'success'
+                    )
+                }
+            })
+            });
+        </script>
+    @endpush
 </div>
