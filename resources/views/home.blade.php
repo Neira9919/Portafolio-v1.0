@@ -72,7 +72,17 @@
                     de uso común.</p>
             </div>
         </div>
-
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 my-8 bg-opacity-25 bg-gradient-to-r from-red-500 via-pink-500 to-kh_main ">
+        <div>
+            <h2 class="text-white text-center font-ail font-bold text-xl mx-4 my-8">¿Quieres hechar un vistazo a mi CV?
+                <br>Aqui puedes acceder a una copia actualziada.</h2>
+        </div>
+        <div class="mx-auto my-8">
+            <div>@livewire('descargar-cv')</div>
+        </div>
+    </div>
+    <div class="container mx-auto mt-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 my-8">
             <div class="p-4 mx-4 my-auto">
                 <div class="grid grid-cols-2">
@@ -114,19 +124,6 @@
             </div>
         </div>
 
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 my-8 bg-opacity-25 bg-gradient-to-r from-red-500 via-pink-500 to-kh_main ">
-        <div>
-            <h2 class="text-white text-center font-ail font-bold text-xl mx-4 my-8">¿Quieres hechar un vistazo a mi CV?
-                <br>Aqui puedes acceder a una copia actualziada.</h2>
-        </div>
-        <div class="mx-auto my-8">
-            <div>@livewire('descargar-cv')</div>
-        </div>
-    </div>
-    
-    <div class="container mx-auto mt-8">
         <div class="w-full bg-white rounded-lg sahdow-lg overflow-hidden mb-8 flex flex-col md:flex-row">
             <div class="w-full md:w-2/5 h-100">
                 <img class="object-center object-cover w-full h-full" src="{{ asset('img/I.jpg') }}" alt="photo">
