@@ -11,7 +11,7 @@ module.exports = {
 
     theme: {
         fontFamily: {
-            'ail': ['aileron']
+            'ail': ['Poppins']
         },
         fontWeight: {
             thin: 100,
@@ -21,7 +21,7 @@ module.exports = {
         },
         extend: {
             fontFamily: {
-                sans: ['ali', ...defaultTheme.fontFamily.sans],
+                sans: ['ail', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 'kh_main': '#8C2A86',
